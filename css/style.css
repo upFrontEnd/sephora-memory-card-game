@@ -1,0 +1,66 @@
+/*------------------------------------*\
+    $ GENERAL
+\*------------------------------------*/
+* {
+  box-sizing: border-box;
+  margin:0; padding: 0;
+}
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #000;
+}
+/*------------------------------------*\
+    $ CARD
+\*------------------------------------*/
+.memory-game { 
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  perspective: 1000px;
+  width: 640px; height: 640px;
+}
+.memory-card { 
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  width: calc(25% - 10px);  height: calc(33.333% - 10px);
+}
+
+.memory-card:active {
+  transform: scale(.97);
+  transition: transform .2s;
+}
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+.front-face,
+.back-face { 
+  backface-visibility: hidden;
+  background-color: #fff;
+  border: 1px solid #a1a1a1;
+  border-radius: 5px;
+  padding: 20px;
+  position: absolute;
+  width: 100%; height: 100%;
+}
+.front-face {
+  transform: rotateY(180deg);
+}
+.front-face img {
+  position: relative; top: 50%;
+  transform: translateY(-50%);
+  width: 100%; height: auto;
+}
+/*------------------------------------*\
+    $ MEDIA QUERIE
+\*------------------------------------*/
+@media (max-width:580px) {
+  body {border-top: 5px solid green}
+
+  .back-face {
+    background: #fff url('../img/s.svg') no-repeat center center/10%;
+  }
+}
