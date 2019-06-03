@@ -1,4 +1,4 @@
-const cards = document.querySelectorAll('.memory-card');
+const cards = document.querySelectorAll(".memory-card");
 
 let hasFlippedCard = false;
 let lockBoard = false;
@@ -8,10 +8,10 @@ function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
 
-  this.classList.add('flip');
+  this.classList.add("flip");
 
   if (!hasFlippedCard) {
-    // First Click
+    // First Click on a card
     hasFlippedCard = true;
     firstCard = this;
     return;
@@ -22,8 +22,7 @@ function flipCard() {
   secondCard = this;
 
   checkForMatch();
-  }
-
+}
 
 function checkForMatch() {
   let isMatch = firstCard.dataset.product === secondCard.dataset.product;
@@ -32,21 +31,25 @@ function checkForMatch() {
 }
 
 function disableCards() {
-  firstCard.removeEventListener('click', flipCard);
-  secondCard.removeEventListener('click', flipCard);
+  firstCard.removeEventListener("click", flipCard);
+  secondCard.removeEventListener("click", flipCard);
 
-  resetBoard();
+  setTimeout(() => {
+    firstCard.classList.add('memory-card-shadow');
+    secondCard.classList.add('memory-card-shadow');
+    resetBoard();
+  }, 900);
+
 }
 
 function unflipCard() {
   lockBoard = true;
-
   setTimeout(() => {
-    firstCard.classList.remove('flip');
-    secondCard.classList.remove('flip');
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
 
     lockBoard = false;
-  }, 900)
+  }, 900);
 }
 
 function resetBoard() {
@@ -61,4 +64,4 @@ function resetBoard() {
   });
 })(); // IIFE
 
-cards.forEach(card => card.addEventListener('click', flipCard));
+cards.forEach(card => card.addEventListener("click", flipCard));
