@@ -22,14 +22,14 @@ body {
   width: 640px; height: 640px;
 }
 .memory-card { 
-  /* outline: 1px dashed gold; */
-  margin: 5px;
+  margin: .3rem;
   position: relative;
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform .5s;
   width: calc(25% - 10px);  height: calc(33.333% - 10px);
 }
+
 .memory-card-shadow {
   box-shadow: 0 0 10px rgba(33, 156, 243, .5),
               0 0 20px rgba(33, 156, 243, .5),
@@ -60,15 +60,4 @@ body {
 .front-face img {
   position: relative; top: 50%;
   transform: translateY(-50%);
-  width: 100%; height: auto;
-}
-/*------------------------------------*\
-    $ MEDIA QUERIE
-\*------------------------------------*/
-@media (max-width:580px) {
-  body {border-top: 5px solid green}
-
-  .back-face {
-    background: #fff url('../img/s.svg') no-repeat center center/10%;
-  }
 }
