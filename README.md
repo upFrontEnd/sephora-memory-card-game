@@ -3,4 +3,4 @@
 # SEPHORA Memmory Card Game
 Javascript memory card game project developed for Sephora.
 
-<a href="https://sephora-memory-card-game.netlify.app" target="_blank"><img src="./img/screen.png" alt="Project preview"></a>
+<a href="https://sephora-memory-card-game.netlify.app" target="_blank"><img src="./img/screen.jpg" alt="Project preview"></a>
