@@ -2,7 +2,7 @@
 
 # SEPHORA Memory Card Game
 
-Memory card game project developed for Sephora.
+Memory card game developed for Sephora.
 
 <a href="https://sephora-memory-card-game.netlify.app" target="_blank"><img src="./public/img/screen.jpg" alt="Project preview"></a>
 
