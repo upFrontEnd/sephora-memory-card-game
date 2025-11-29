@@ -1,0 +1,22 @@
+// src/scss/layout/_game.scss
+@use "../abstracts" as *;
+
+.memory-game {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  padding: $space-6;
+
+  // Grille desktop
+  grid-template-columns: repeat(4, $card-w);
+  gap: $card-gap;
+
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(3, $card-w);
+  }
+
+  @media (max-width: 640px) {
+    // 2 colonnes fluides, mais on garde un minimum cohérent
+    grid-template-columns: repeat(2, minmax(min(44vw, 170px), 1fr));
+  }
+}
