@@ -1,4 +1,3 @@
-// src/scss/components/_card.scss
 @use "../abstracts" as *;
 
 .memory-game {
@@ -6,21 +5,17 @@
 }
 
 .memory-card {
-  width: $card-w;
-  height: $card-h;
-  position: relative;
-
-  border-radius: $radius;
   background: var(--bg-surface, #{$color-surface});
   border: 1px solid var(--border-subtle, #{$color-border-subtle});
+  border-radius: $radius;
   box-shadow: $shadow-subtle;
-
-  cursor: pointer;
-  user-select: none;
+  cursor: pointer; height: $card-h;
+  position: relative;
   -webkit-tap-highlight-color: transparent;
-
   transform-style: preserve-3d;
   transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  user-select: none;
+  width: $card-w;
 
   &.flip {
     transform: rotateY(180deg);
@@ -28,14 +23,11 @@
 
   .front-face,
   .back-face {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; // ✅ Safari
+    backface-visibility: hidden; // ✅ Safari
+    border-radius: inherit; height: 100%; inset: 0;
     overflow: hidden;
+    position: absolute;
+    width: 100%;
   }
 
   // Face "produit" (doit apparaître quand la carte est flipped)
@@ -43,23 +35,22 @@
     transform: rotateY(180deg);
 
     img {
-      display: block;
-      width: 100%;
-      height: 100%;
+      display: block; height: 100%;
       object-fit: cover;
+      width: 100%;
     }
   }
 
   // Face "logo" (dans ton HTML c’est directement <img class="back-face">)
   img.back-face {
-    padding: 22px;
     background: var(--bg-surface-soft, #{$color-surface-soft});
-    object-fit: contain;
     display: block;
+    object-fit: contain;
+    padding: 22px;
   }
 
   &.memory-card-shadow {
-    border-color: rgba(34, 197, 94, 0.55);
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22), $shadow-subtle;
+    border-color: rgb(34 197 94 / 55%);
+    box-shadow: 0 0 0 3px rgb(34 197 94 / 22%), $shadow-subtle;
   }
 }

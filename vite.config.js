@@ -1,15 +1,15 @@
-import { defineConfig } from 'vite';
-import path from 'path';
+import { defineConfig } from "vite";
+import path from "path";
 
 export default defineConfig({
-  publicDir: 'public',
+  publicDir: "public",
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
   },
   css: {
-    devSourcemap: true, 
+    devSourcemap: true,
     preprocessorOptions: {
       scss: {},
     },
@@ -17,9 +17,9 @@ export default defineConfig({
   server: {
     open: true,
     port: 3000,
-    host: '0.0.0.0',
+    host: "0.0.0.0",
   },
   build: {
-    sourcemap: true, 
+    sourcemap: true,
   },
 });

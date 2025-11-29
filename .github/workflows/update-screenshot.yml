@@ -4,16 +4,16 @@ name: Update README screenshot
 # Quand est-ce que le workflow se déclenche ?
 on:
   push:
-    branches: [ master ]      # → à chaque push sur la branche "main"
-  workflow_dispatch: {}      # → déclenchable manuellement depuis l'UI GitHub
+    branches: [master] # → à chaque push sur la branche "main"
+  workflow_dispatch: {} # → déclenchable manuellement depuis l'UI GitHub
 
 jobs:
-  screenshot:                # Nom du job (tu peux l'appeler comme tu veux)
-    runs-on: ubuntu-latest   # Machine virtuelle utilisée par GitHub (Linux Ubuntu)
+  screenshot: # Nom du job (tu peux l'appeler comme tu veux)
+    runs-on: ubuntu-latest # Machine virtuelle utilisée par GitHub (Linux Ubuntu)
 
     # Autorisations pour ce job
     permissions:
-      contents: write        # On lui permet de pousser des commits dans le repo
+      contents: write # On lui permet de pousser des commits dans le repo
 
     steps:
       # 1) Récupère le code de ton repo sur la VM GitHub
@@ -47,7 +47,7 @@ jobs:
       # 6) Appelle ton script de screenshot
       #    → "screenshot": "node scripts/screenshot.js"
       - name: Take screenshot
-        run: bun run screenshot      # équivaut à: node scripts/screenshot.js
+        run: bun run screenshot # équivaut à: node scripts/screenshot.js
 
       # 7) Arrête le serveur de preview
       - name: Stop server
