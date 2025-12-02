@@ -1,5 +1,10 @@
 @use "../abstracts" as *;
 
+.sephora-letter {
+  fill: $color-primary;
+  width: 13rem;
+}
+
 .memory-game {
   display: grid;
   gap: $card-gap;
