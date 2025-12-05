@@ -1,0 +1,81 @@
+@use "../abstracts" as *;
+
+.theme-toggle {
+  position: fixed; top: $space-4; right: $space-4;
+  z-index: 10;
+}
+
+.toggle_switch {
+  display: block;
+  position: relative;
+  width: 100px; height: 45px;
+}
+
+input[type="checkbox"].switch_3 {
+  appearance: none;
+  cursor: pointer;
+  outline: 0;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+}
+
+svg.checkbox {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+svg.checkbox .outer-ring {
+  stroke-dasharray: 375;
+  stroke-dashoffset: 375;
+  animation: resetRing .35s ease-in-out forwards;
+}
+
+input[type="checkbox"].switch_3:checked + svg.checkbox .outer-ring {
+  animation: animateRing .35s ease-in-out forwards;
+}
+
+svg.checkbox .is_checked {
+  fill: yellow;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  transform: translateX(200%) rotate(45deg);
+  transition: all .35s;
+}
+
+svg.checkbox .is_unchecked {
+  fill: #fff;
+  opacity: 1;
+  transform-origin: 50% 50%;
+  transform: translateX(0) rotate(0deg);
+  transition: all .35s;
+}
+
+input[type="checkbox"].switch_3:checked + svg.checkbox .is_checked {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+input[type="checkbox"].switch_3:checked + svg.checkbox .is_unchecked {
+  opacity: 0;
+  transform: translateX(-200%) rotate(180deg);
+}
+
+@keyframes animateRing {
+  to { stroke-dashoffset: 0; stroke: #b0aa28; }
+}
+
+@keyframes resetRing {
+  to { stroke-dashoffset: 0; stroke: #233043; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  svg.checkbox .is_checked,
+  svg.checkbox .is_unchecked {
+    transition: none;
+  }
+  svg.checkbox .outer-ring {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

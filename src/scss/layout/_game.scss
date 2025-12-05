@@ -1,18 +1,11 @@
 @use "../abstracts" as *;
 
-.sephora-letter {
-  fill: $color-primary;
-  width: 13rem;
-}
-
 .memory-game {
   display: grid;
   gap: $card-gap;
 
   // Grille desktop
   grid-template-columns: repeat(4, $card-w);
-  min-height: 100vh;
-  padding: $space-6;
   place-content: center;
 
   @media (width <= 860px) {
