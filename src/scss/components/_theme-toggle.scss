@@ -8,7 +8,7 @@
 .toggle_switch {
   display: block;
   position: relative;
-  width: 100px; height: 45px;
+  width: 65px; height: 45px;
 }
 
 input[type="checkbox"].switch_3 {
@@ -36,7 +36,7 @@ input[type="checkbox"].switch_3:checked + svg.checkbox .outer-ring {
 }
 
 svg.checkbox .is_checked {
-  fill: yellow;
+  fill: gold;
   opacity: 0;
   transform-origin: 50% 50%;
   transform: translateX(200%) rotate(45deg);
@@ -62,7 +62,7 @@ input[type="checkbox"].switch_3:checked + svg.checkbox .is_unchecked {
 }
 
 @keyframes animateRing {
-  to { stroke-dashoffset: 0; stroke: #b0aa28; }
+  to { stroke-dashoffset: 0; stroke: #c7c7c7; }
 }
 
 @keyframes resetRing {

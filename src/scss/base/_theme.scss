@@ -1,22 +1,5 @@
 @use "../abstracts" as *;
 
-@mixin theme-vars($theme) {
-  @each $name, $value in $theme {
-    --#{$name}: #{$value};
-  }
-}
-
-:root {
-  @include theme-vars($theme-light);
-  color-scheme: light;
-}
-
-:root[data-theme="dark"] {
-  @include theme-vars($theme-dark);
-  color-scheme: dark;
-}
-
-
 body {
   background:
     radial-gradient(900px 500px at 20% -10%, rgb(37 99 235 / 18%), transparent 60%),
@@ -41,4 +24,27 @@ h1 {
     font-size: 1rem;
     text-align: right;
   }
+}
+
+// Génère les variables CSS à partir d'une map de thème
+// Exemple : (bg: #fff, text: #000) -> --bg: #fff; --text: #000;
+@mixin export-theme-vars($theme) {
+  @each $name, $value in $theme {
+    --#{$name}: #{$value};
+  }
+}
+
+/** Thème par défaut : light **/
+:root {
+  @include export-theme-vars($theme-light);
+}
+
+/** Thème clair explicite **/
+[data-theme='light'] {
+  @include export-theme-vars($theme-light);
+}
+
+/** Thème sombre **/
+[data-theme='dark'] {
+  @include export-theme-vars($theme-dark);
 }
