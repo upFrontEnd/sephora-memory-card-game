@@ -16,4 +16,9 @@
     // 2 colonnes fluides, mais on garde un minimum cohérent
     grid-template-columns: repeat(2, minmax(min(44vw, 170px), 1fr));
   }
+  &.win .memory-card {
+    box-shadow: 0 0 40px rgba(255,215,102,.70);
+    cursor: default;
+    pointer-events: none;
+  }
 }
