@@ -88,12 +88,31 @@ export function createGame() {
     cards.forEach((card) => card.addEventListener("click", flipCard));
   }
 
-  function allFlippedCard() {
-    if (gameContainer.classList.contains("win")) return ;
+  function playWinLottie() {
+    const overlay = document.querySelector(".win-overlay");
+    const el = document.querySelector("#win-lottie");
+    if (!overlay || !el) return;
   
-    const won = cards.every((card) => card.classList.contains("memory-card-shadow"));
-    if(won) gameContainer.classList.add("win");
-  }
+    overlay.hidden = false;
+  
+    const start = () => el.dotLottie?.play?.();
+    if (el.dotLottie) start();
+    else el.addEventListener("ready", start, { once: true });
+  }  
+
+  function allFlippedCard() {
+    // Déjà gagné → on ne refait rien
+    if (gameContainer.classList.contains("win")) return;
+  
+    const total = cards.length;
+    const matched = document.querySelectorAll(".memory-card.memory-card-shadow").length;
+  
+    // Sécurité: si total = 0, on ne déclenche jamais la victoire
+    if (total > 0 && matched === total) {
+      gameContainer.classList.add("win");
+      playWinLottie();
+    }
+  }gi
 
   
   // API publique du module : on expose juste mount()
