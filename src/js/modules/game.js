@@ -112,7 +112,7 @@ export function createGame() {
       gameContainer.classList.add("win");
       playWinLottie();
     }
-  }gi
+  }
 
   
   // API publique du module : on expose juste mount()
