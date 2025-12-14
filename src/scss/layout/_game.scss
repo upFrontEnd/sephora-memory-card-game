@@ -2,36 +2,50 @@
 
 .memory-game {
   display: grid;
-  gap: $card-gap;
-
-  // Grille desktop
-  grid-template-columns: repeat(4, $card-w);
-  place-content: center;
-
-  @media (width <= 860px) {
+    gap: $card-gap;
+    place-content: center;
     grid-template-columns: repeat(3, $card-w);
-  }
-
-  @media (width <= 640px) {
-    // 2 colonnes fluides, mais on garde un minimum cohérent
-    grid-template-columns: repeat(2, minmax(min(44vw, 170px), 1fr));
-  }
+  justify-items: center; 
+  margin-inline: auto; 
+  padding: $space-4;
   &.win .memory-card {
-    box-shadow: 0 0 40px rgba(255,215,102,.70);
-    cursor: default;
     pointer-events: none;
+    cursor: default;
+  }
+  &.win .memory-card-shadow {
+    box-shadow: 0 0 40px rgba(255, 227, 0);
+  }
+  @media (width >= 700px) {
+    grid-template-columns: repeat(4, $card-w);
+    .sephora-s {
+      width: 1.6rem; height: 5rem;
+    }
   }
 }
 
-.win-overlay{
-  background: rgba(0,0,0,.25);
+/* Overlay de victoire (Lottie) */
+.win-overlay {
   backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.25);
   display: grid;
     place-items: center;
   position: fixed; inset: 0;
   z-index: 999;
 }
 
-.win-overlay[hidden]{
+.win-overlay[hidden] {
   display: none;
+}
+
+/* Lottie responsive */
+.win-lottie {
+  width: min(320px, 70vw);
+  height: min(320px, 70vw);
+}
+
+@media (width <= 480px) {
+  .win-lottie {
+    width: min(260px, 80vw);
+    height: min(260px, 80vw);
+  }
 }
