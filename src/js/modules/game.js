@@ -1,7 +1,6 @@
 import { shuffleCards } from "./shuffle.js";
 
 export function createGame() {
-  // Récupère toutes les cartes du DOM et les met dans un tableau
   const cards = Array.from(document.querySelectorAll(".memory-card"));
   const gameContainer = document.querySelector(".memory-game");
 
@@ -114,7 +113,6 @@ export function createGame() {
     }
   }
 
-  
   // API publique du module : on expose juste mount()
   return { mount };
 }
