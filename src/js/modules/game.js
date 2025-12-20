@@ -1,8 +1,15 @@
+// Mélange les cartes (via la propriété CSS `order`)
 import { shuffleCards } from "./shuffle.js";
 
 export function createGame() {
+  // Récupère toutes les cartes du plateau
   const cards = Array.from(document.querySelectorAll(".memory-card"));
+  // Conteneur principal du jeu (utilisé pour gérer l'état "win")
   const gameContainer = document.querySelector(".memory-game");
+  // Overlay de victoire + animation Lottie + bouton rejouer
+  const overlay = document.querySelector(".win-overlay");
+  const lottieEl = document.querySelector("#win-lottie");
+  const replayButton = document.querySelector(".replay-button");
 
   // === Etat du jeu ===
   let hasFlippedCard = false; // indique si on a déjà retourné 1 carte (en attente de la 2e)
@@ -10,7 +17,10 @@ export function createGame() {
   let firstCard = null;       // référence DOM de la 1ère carte retournée
   let secondCard = null;      // référence DOM de la 2e carte retournée
 
-  // Remet l’état à zéro après un tour (match ou non)
+  /**
+   * Remet l’état interne du tour à zéro (qu’il y ait eu match ou non).
+   * Ne touche pas à l’état global "win" ni à l’overlay.
+   */
   function resetBoard() {
     hasFlippedCard = false;
     lockBoard = false;
@@ -18,46 +28,66 @@ export function createGame() {
     secondCard = null;
   }
 
-  // Cas "pas match" : on re-retourne les deux cartes après un délai (le temps de voir)
+  /**
+   * Cas "pas match" :
+   * - on bloque temporairement le plateau
+   * - on re-retourne les deux cartes après un délai (le temps de les voir)
+   */
   function unflipCard() {
     lockBoard = true; // on bloque les clics pendant le "retournement"
 
     setTimeout(() => {
-      // ?. évite une erreur si firstCard/secondCard est null (sécurité)
+      // `?.` évite une erreur si firstCard/secondCard est null (sécurité)
       firstCard?.classList.remove("flip");
       secondCard?.classList.remove("flip");
-      lockBoard = false; // on ré-autorise les clics
-    }, 900); // 900ms = correspond à la durée/ressenti de l’animation CSS
+      lockBoard = false; // on ré-autorise les clics après l’animation
+    }, 900); // 900ms ≈ durée de l’animation CSS de flip
   }
 
-  // Cas "match" : on désactive les cartes (plus cliquables) puis on marque visuellement le match
+  /**
+   * Cas "match" :
+   * - on capture les deux cartes matchées
+   * - on enlève leurs listeners de clic (plus cliquables)
+   * - on leur applique un style "trouvé" (memory-card-shadow)
+   * - on vérifie ensuite si toutes les cartes sont trouvées (victoire)
+   */
   function disableCards() {
     lockBoard = true; // bloque les clics pendant qu'on “finalise” le match
-  
-    // ✅ on capture les références au moment du match
+
+    // On capture les références au moment du match pour éviter que
+    // firstCard/secondCard soient modifiées avant le setTimeout
     const matchedA = firstCard;
     const matchedB = secondCard;
-  
+
     matchedA?.removeEventListener("click", flipCard);
     matchedB?.removeEventListener("click", flipCard);
-  
+
     setTimeout(() => {
       matchedA?.classList.add("memory-card-shadow");
       matchedB?.classList.add("memory-card-shadow");
-  
-      resetBoard();      // prépare le tour suivant (déverrouille aussi)
-      allFlippedCard();  // check victoire -> ajoute .win si besoin
+
+      resetBoard();      // prépare le tour suivant (et déverrouille le plateau)
+      allFlippedCard();  // vérifie si la partie est gagnée
     }, 900);
   }
 
-  // Compare les deux cartes via leur data-attribute (ex: data-product="lipstick")
+  /**
+   * Compare les deux cartes retournées via leur data-attribute
+   * (ex: data-product="lipstick").
+   * - Si match → on les "gèle" (disableCards)
+   * - Sinon → on les re-retourne (unflipCard)
+   */
   function checkForMatch() {
     const isMatch = firstCard?.dataset.product === secondCard?.dataset.product;
-    // Si match -> on les "gèle", sinon on les "dé-flip"
     isMatch ? disableCards() : unflipCard();
   }
 
-  // Handler de clic sur une carte
+  /**
+   * Handler de clic sur une carte :
+   * - ignore si le plateau est verrouillé
+   * - ignore si on reclique sur la même carte
+   * - gère la logique "1ère carte / 2ème carte", puis lance la comparaison
+   */
   function flipCard() {
     // Si le plateau est verrouillé (animation en cours), on ignore le clic
     if (lockBoard) return;
@@ -65,7 +95,7 @@ export function createGame() {
     // Empêche de double-cliquer la même carte comme "2e carte"
     if (this === firstCard) return;
 
-    // On retourne la carte (CSS: .flip => rotateY(180deg))
+    // On retourne visuellement la carte (CSS: .flip => rotateY(180deg))
     this.classList.add("flip");
 
     // Si c’est la 1ère carte du tour :
@@ -81,31 +111,43 @@ export function createGame() {
     checkForMatch();        // on compare les deux
   }
 
-  // Démarre le jeu : mélange puis attache les listeners
-  function mount() {
-    shuffleCards(cards);
-    cards.forEach((card) => card.addEventListener("click", flipCard));
+  /**
+   * Affiche l’overlay de victoire et lance l’animation Lottie.
+   * - Affiche le conteneur .win-overlay
+   * - Attend que dotLottie soit prêt pour lancer l’animation si nécessaire
+   */
+  function playWinLottie() {
+    if (!overlay || !lottieEl) return;
+
+    // Affiche l’overlay
+    overlay.hidden = false;
+
+    // Quand l’instance dotLottie est prête, on lance l’animation
+    const start = () => lottieEl.dotLottie?.play?.();
+    if (lottieEl.dotLottie) {
+      start();
+    } else {
+      lottieEl.addEventListener("ready", start, { once: true });
+    }
   }
 
-  function playWinLottie() {
-    const overlay = document.querySelector(".win-overlay");
-    const el = document.querySelector("#win-lottie");
-    if (!overlay || !el) return;
-  
-    overlay.hidden = false;
-  
-    const start = () => el.dotLottie?.play?.();
-    if (el.dotLottie) start();
-    else el.addEventListener("ready", start, { once: true });
-  }  
-
+  /**
+   * Vérifie si toutes les cartes ont été trouvées :
+   * - on compte le nombre total de cartes
+   * - on compte combien ont la classe "memory-card-shadow"
+   * - si tous les éléments sont matchés, on passe en mode "win"
+   *   (classe .win sur le conteneur + animation Lottie)
+   */
   function allFlippedCard() {
-    // Déjà gagné → on ne refait rien
+    // Sécurité : si le conteneur n’existe pas, on sort
+    if (!gameContainer) return;
+
+    // Si la victoire a déjà été déclarée, on ne refait rien
     if (gameContainer.classList.contains("win")) return;
-  
+
     const total = cards.length;
     const matched = document.querySelectorAll(".memory-card.memory-card-shadow").length;
-  
+
     // Sécurité: si total = 0, on ne déclenche jamais la victoire
     if (total > 0 && matched === total) {
       gameContainer.classList.add("win");
@@ -113,6 +155,66 @@ export function createGame() {
     }
   }
 
-  // API publique du module : on expose juste mount()
+  /**
+   * Réinitialise complètement la partie :
+   * - remet l’état interne à zéro
+   * - enlève les classes "flip" et "memory-card-shadow" sur toutes les cartes
+   * - supprime l’état "win" sur le conteneur
+   * - masque l’overlay et stoppe l’animation Lottie
+   * - remélange les cartes et réattache les listeners de clic
+   */
+  function restartGame() {
+    // Réinitialise l’état interne
+    resetBoard();
+
+    // Nettoie les classes visuelles et réactive les clics sur chaque carte
+    cards.forEach((card) => {
+      card.classList.remove("flip", "memory-card-shadow");
+      card.addEventListener("click", flipCard);
+    });
+
+    // Supprime l’état de victoire sur le plateau
+    if (gameContainer) {
+      gameContainer.classList.remove("win");
+    }
+
+    // Masque l’overlay et stoppe Lottie
+    if (overlay) {
+      overlay.hidden = true;
+    }
+    if (lottieEl?.dotLottie) {
+      lottieEl.dotLottie.stop();
+      // Optionnel : revenir au début de l’anim
+      // lottieEl.dotLottie.goToAndStop(0, true);
+    }
+
+    // Nouveau mélange
+    shuffleCards(cards);
+  }
+
+  /**
+   * Démarre le jeu :
+   * - mélange les cartes
+   * - attache les listeners de clic sur chaque carte
+   * - attache le listener sur le bouton "Rejouer" si présent
+   */
+  function mount() {
+    shuffleCards(cards);
+    cards.forEach((card) => card.addEventListener("click", flipCard));
+
+    if (replayButton) {
+      replayButton.addEventListener("click", restartGame);
+    }
+
+    // On s’assure que l’overlay est bien masqué au premier lancement
+    if (overlay) {
+      overlay.hidden = true;
+    }
+    if (gameContainer) {
+      gameContainer.classList.remove("win");
+    }
+  }
+
+  // API publique du module : on expose juste `mount()`
   return { mount };
 }

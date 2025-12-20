@@ -4,22 +4,14 @@
   display: grid;
     gap: $card-gap;
     place-content: center;
-    grid-template-columns: repeat(3, $card-w);
+    grid-template-columns: repeat(4, $card-w);
   justify-items: center; 
   margin-inline: auto; 
   padding: $space-4;
+
   &.win .memory-card {
     pointer-events: none;
     cursor: default;
-  }
-  &.win .memory-card-shadow {
-    box-shadow: 0 0 40px rgba(255, 227, 0);
-  }
-  @media (width >= 700px) {
-    grid-template-columns: repeat(4, $card-w);
-    .sephora-s {
-      width: 1.6rem; height: 5rem;
-    }
   }
 }
 
@@ -35,6 +27,30 @@
 
 .win-overlay[hidden] {
   display: none;
+}
+
+.win-overlay__content {
+  display: grid;
+    gap: $space-3;
+    place-items: center;
+}
+
+/* Bouton rejouer */
+.replay-button {
+  background: var(--bg-surface, #{$color-surface});
+  border: 1px solid var(--border-subtle, #{$color-border-subtle});
+  border-radius: 999px;
+  box-shadow: $shadow-subtle;
+  color: var(--text);
+  cursor: pointer;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  padding: $space-2 $space-4;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.replay-button:hover {
+  background: var(--bg-surface-soft, #{$color-surface-soft});
 }
 
 /* Lottie responsive */

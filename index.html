@@ -28,14 +28,24 @@
         <span>Memory Game</span>
       </h1>
       <div class="win-overlay" hidden>
-        <dotlottie-wc
-          id="win-lottie"
-          src="/lottie/win.json"
-          loop
-          autoplay="false"
-          style="width: 320px; height: 320px"
-        ></dotlottie-wc>
+        <div class="win-overlay__content">
+          <dotlottie-wc
+            id="win-lottie"
+            src="/lottie/win.json"
+            loop
+            autoplay="false"
+            class="win-lottie"
+          ></dotlottie-wc>
+      
+          <button
+            type="button"
+            class="replay-button"
+          >
+            Rejouer
+          </button>
+        </div>
       </div>
+      
       <section class="memory-game">
         <div class="memory-card" data-product="ysl">
           <div class="front-face">
