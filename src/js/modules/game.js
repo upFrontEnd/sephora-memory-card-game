@@ -28,23 +28,19 @@ export function createGame() {
   }
 
   /**
-   * Cas "pas match" :
+   * Cas "Non match" :
    * - on bloque temporairement le plateau
    * - on joue le son d'unflip
-   * - on re-retourne les deux cartes après un délai (le temps de les voir)
+   * - on re-retourne les deux cartes après un délai 
    */
   function unflipCard() {
     lockBoard = true; // on bloque les clics pendant le "retournement"
 
-    // Son spécifique pour le cas "raté"
-    playSound("unflip");
-
     setTimeout(() => {
-      // `?.` évite une erreur si firstCard/secondCard est null (sécurité)
-      firstCard?.classList.remove("flip");
-      secondCard?.classList.remove("flip");
+      firstCard.classList.remove("flip");
+      secondCard.classList.remove("flip");
       lockBoard = false; // on ré-autorise les clics après l’animation
-    }, 900); // 900ms ≈ durée de l’animation CSS de flip
+    }, 900); 
   }
 
   /**
@@ -57,23 +53,19 @@ export function createGame() {
   function disableCards() {
     lockBoard = true; // bloque les clics pendant qu'on “finalise” le match
 
-    // On capture les références au moment du match pour éviter que
-    // firstCard/secondCard soient modifiées avant le setTimeout
-    const matchedA = firstCard;
+    const matchedA = firstCard;   // On capture les références au moment du match pour éviter que firstCard/secondCard soient modifiées avant le setTimeout
     const matchedB = secondCard;
 
-    matchedA?.removeEventListener("click", flipCard);
-    matchedB?.removeEventListener("click", flipCard);
-
-    // Son de "match" déclenché immédiatement après la validation du match
-    playSound("match");
+    matchedA.removeEventListener("click", flipCard);
+    matchedB.removeEventListener("click", flipCard);
 
     setTimeout(() => {
-      matchedA?.classList.add("memory-card-shadow");
-      matchedB?.classList.add("memory-card-shadow");
+      matchedA.classList.add("memory-card-shadow");
+      matchedB.classList.add("memory-card-shadow");
 
-      resetBoard();      // prépare le tour suivant (et déverrouille le plateau)
-      allFlippedCard();  // vérifie si la partie est gagnée
+      resetBoard();       // Prépare le tour suivant (et déverrouille le plateau)
+      allFlippedCard();   // Vérifie si la partie est gagnée
+      playSound("match"); // Son de "match" déclenché immédiatement après la validation du match
     }, 900);
   }
 
@@ -84,7 +76,7 @@ export function createGame() {
    * - Sinon → on les re-retourne (unflipCard)
    */
   function checkForMatch() {
-    const isMatch = firstCard?.dataset.product === secondCard?.dataset.product;
+    const isMatch = firstCard.dataset.product === secondCard.dataset.product;
     isMatch ? disableCards() : unflipCard();
   }
 
@@ -161,11 +153,11 @@ export function createGame() {
     if (total > 0 && matched === total) {
       gameContainer.classList.add("win");
 
-      // Son de victoire
-      playSound("win");
+      
+      playSound("win"); 
 
-      // Animation de victoire
-      playWinLottie();
+      
+      playWinLottie(); 
     }
   }
 
@@ -178,7 +170,6 @@ export function createGame() {
    * - remélange les cartes et réattache les listeners de clic
    */
   function restartGame() {
-    // Réinitialise l’état interne
     resetBoard();
 
     // Nettoie les classes visuelles et réactive les clics sur chaque carte

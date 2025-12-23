@@ -1,7 +1,7 @@
 import "../scss/style.scss";
-import { initGame } from "./app.js";
 import { initThemeToggle } from "./modules/theme-toggle.js";
 import { initSoundToggle, preloadAllSounds } from "./modules/sound.js";
+import { createGame } from "./modules/game.js";
 import "@lottiefiles/dotlottie-wc";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,3 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initSoundToggle();
   initGame();
 });
+
+export function initGame() {
+  const game = createGame();
+  game.mount();
+}
