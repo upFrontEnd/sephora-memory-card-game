@@ -1,12 +1,11 @@
-// Mélange les cartes (via la propriété CSS `order`)
 import { shuffleCards } from "./shuffle.js";
+import { playSound } from "./sound.js";
 
 export function createGame() {
-  // Récupère toutes les cartes du plateau
+
   const cards = Array.from(document.querySelectorAll(".memory-card"));
-  // Conteneur principal du jeu (utilisé pour gérer l'état "win")
+  
   const gameContainer = document.querySelector(".memory-game");
-  // Overlay de victoire + animation Lottie + bouton rejouer
   const overlay = document.querySelector(".win-overlay");
   const lottieEl = document.querySelector("#win-lottie");
   const replayButton = document.querySelector(".replay-button");
@@ -31,10 +30,14 @@ export function createGame() {
   /**
    * Cas "pas match" :
    * - on bloque temporairement le plateau
+   * - on joue le son d'unflip
    * - on re-retourne les deux cartes après un délai (le temps de les voir)
    */
   function unflipCard() {
     lockBoard = true; // on bloque les clics pendant le "retournement"
+
+    // Son spécifique pour le cas "raté"
+    playSound("unflip");
 
     setTimeout(() => {
       // `?.` évite une erreur si firstCard/secondCard est null (sécurité)
@@ -61,6 +64,9 @@ export function createGame() {
 
     matchedA?.removeEventListener("click", flipCard);
     matchedB?.removeEventListener("click", flipCard);
+
+    // Son de "match" déclenché immédiatement après la validation du match
+    playSound("match");
 
     setTimeout(() => {
       matchedA?.classList.add("memory-card-shadow");
@@ -97,6 +103,9 @@ export function createGame() {
 
     // On retourne visuellement la carte (CSS: .flip => rotateY(180deg))
     this.classList.add("flip");
+
+    // Son de flip (déclenché à chaque carte retournée)
+    playSound("flip");
 
     // Si c’est la 1ère carte du tour :
     if (!hasFlippedCard) {
@@ -136,7 +145,7 @@ export function createGame() {
    * - on compte le nombre total de cartes
    * - on compte combien ont la classe "memory-card-shadow"
    * - si tous les éléments sont matchés, on passe en mode "win"
-   *   (classe .win sur le conteneur + animation Lottie)
+   *   (classe .win sur le conteneur + animation Lottie + son de victoire)
    */
   function allFlippedCard() {
     // Sécurité : si le conteneur n’existe pas, on sort
@@ -151,6 +160,11 @@ export function createGame() {
     // Sécurité: si total = 0, on ne déclenche jamais la victoire
     if (total > 0 && matched === total) {
       gameContainer.classList.add("win");
+
+      // Son de victoire
+      playSound("win");
+
+      // Animation de victoire
       playWinLottie();
     }
   }

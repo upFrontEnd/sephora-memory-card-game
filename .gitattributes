@@ -1,6 +1,0 @@
-# Par défaut : normalise en LF dans le repo
-* text=auto eol=lf
-
-# Windows scripts 
-*.bat text eol=crlf
-*.cmd text eol=crlf

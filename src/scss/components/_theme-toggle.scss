@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 
 .theme-toggle {
-  position: fixed; top: $space-4; right: $space-4;
+  position: absolute; top: $space-4; right: $space-4;
   z-index: 10;
 }
 

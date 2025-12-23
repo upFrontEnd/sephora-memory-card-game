@@ -40,16 +40,8 @@ h1 {
 }
 
 /** Thème par défaut : light **/
-:root {
-  @include export-theme-vars($theme-light);
-}
-
+:root { @include export-theme-vars($theme-light); }
 /** Thème clair explicite **/
-[data-theme='light'] {
-  @include export-theme-vars($theme-light);
-}
-
+[data-theme='light'] { @include export-theme-vars($theme-light); }
 /** Thème sombre **/
-[data-theme='dark'] {
-  @include export-theme-vars($theme-dark);
-}
+[data-theme='dark'] { @include export-theme-vars($theme-dark); }
