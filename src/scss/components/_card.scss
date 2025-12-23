@@ -11,11 +11,11 @@
   box-shadow: $shadow-subtle;
   cursor: pointer;
   position: relative;
-  width: $card-w; height: $card-h;
+  width: 100%; max-width: $card-w;
+  height: $card-h;
   transform-style: preserve-3d;
   transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
 
   &-shadow {
     box-shadow: 0 0 40px rgba(20, 121, 235, 1);
@@ -41,7 +41,6 @@
     background: var(--bg-surface-soft, #{$color-surface-soft});
     display: grid;
       place-items: center;
-    padding: 22px;
     transform: rotateY(0deg);
   }
 
@@ -62,4 +61,20 @@
     width: 2rem; height: 7rem;
   }
 
+  // ============================
+  // Responsive sizing des cartes
+  // ============================
+  @media (width <= 640px) {
+    height: $card-h * 0.85;
+    .sephora-s {
+      width: 1.8rem; height: 6rem;
+    }
+  }
+
+  @media (width <= 420px) {
+    height: $card-h * 0.7;
+    .sephora-s {
+      width: 1.6rem; height: 5rem;
+    }
+  }
 }
