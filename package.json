@@ -8,6 +8,7 @@
   "devDependencies": {
     "playwright": "^1.56.1",
     "prettier": "^3.7.2",
+    "rollup-plugin-visualizer": "^6.0.5",
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^16.0.0",
     "stylelint-order": "^7.0.0",

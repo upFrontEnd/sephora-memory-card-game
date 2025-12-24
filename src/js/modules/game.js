@@ -117,18 +117,18 @@ export function createGame() {
   /**
    * Affiche l’overlay de victoire et lance l’animation Lottie.
    */
-  function playWinLottie() {
-    if (!overlay || !lottieEl) return;
+  // function playWinLottie() {
+  //   if (!overlay || !lottieEl) return;
 
-    overlay.hidden = false;
+  //   overlay.hidden = false;
 
-    const start = () => lottieEl.dotLottie?.play?.();
-    if (lottieEl.dotLottie) {
-      start();
-    } else {
-      lottieEl.addEventListener("ready", start, { once: true });
-    }
-  }
+  //   const start = () => lottieEl.dotLottie?.play?.();
+  //   if (lottieEl.dotLottie) {
+  //     start();
+  //   } else {
+  //     lottieEl.addEventListener("ready", start, { once: true });
+  //   }
+  // }
 
   /**
    * Vérifie si toutes les cartes ont été trouvées :
