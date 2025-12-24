@@ -37,12 +37,11 @@
 /* Bouton rejouer */
 .replay-button {
   background: var(--bg-surface, #{$color-surface});
-  border: 1px solid var(--border-subtle, #{$color-border-subtle});
+  border: none;
   border-radius: 999px;
-  box-shadow: 0 8px 20px;
   color: var(--text);
   cursor: pointer;
-  font-family: $font-family-base;
+  font-family: "Poppins", sans-serif;
   font-size: $font-size-sm;
   padding: .5rem 1rem;
 }

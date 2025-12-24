@@ -1,6 +1,7 @@
 @use "../abstracts" as *;
 
 .sound-toggle {
+    background: transparent;
     border: 1px solid #233043;
     border-radius: 50%;
     box-shadow: $shadow-subtle;

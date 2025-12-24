@@ -1,34 +1,79 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SEPHORA - Memory Game</title>
     <meta name="description" content="Un jeu de mémoire : retrouve les paires de cartes." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Sephora Memory Game" />
+    <meta property="og:title" content="Sephora Memory Game – Jeu de mémoire parfumé" />
+    <meta property="og:description" content="Un jeu de mémoire rapide et élégant : retourne les cartes, retrouve les paires de parfums iconiques" />
+    <meta property="og:url" content="https://sephora-memory-game.netlify.app/" />
+
+    <meta property="og:image" content="https://sephora-memory-game.netlify.app/img/og/sephora-memory-game-1200x630.png" />
+    <meta property="og:image:secure_url" content="https://sephora-memory-game.netlify.app/img/og/sephora-memory-game-1200x630.png" />
+    <meta property="og:image:alt" content="Interface du Sephora Memory Game avec une grille de cartes parfum" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sephora Memory Game – Jeu de mémoire parfumé" />
+    <meta name="twitter:description" content="Retourne les cartes, retrouve les paires de parfums iconiques." />
+    <meta name="twitter:image" content="https://sephora-memory-game.netlify.app/img/og/sephora-memory-game-1200x630.png" />
+    <meta name="twitter:image:alt" content="Interface du Sephora Memory Game avec une grille de cartes parfum" />
+    <meta name="twitter:url" content="https://sephora-memory-game.netlify.app/" />
+    <meta name="twitter:domain" content="sephora-memory-game.netlify.app" />
+    
+    <meta name="theme-color" content="#060b18" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/img/favicon/site.webmanifest" />
-    <meta name="theme-color" content="#060b18" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="canonical" href="https://sephora-memory-game.netlify.app/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <script type="module" src="/src/js/main.js"></script>
   </head>
   <body>
     <main>
       <h1>
         <span class="visually-hidden">Sephora Memory Game</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="sephora-letter" viewBox="0 0 1000 129.6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="sephora-letter"
+          viewBox="0 0 1000 129.6"
+          aria-hidden="true"
+          focusable="false"
+        >
           <path fill="none" d="M812.6 36.9c-2.2-20.1-27.4-18.6-32.2-18.6h-10.1v41.5c4.3.2 7.6.2 11.9.2 5.1 0 33 .7 30.4-23.1ZM631.4 17.7c-28.7 0-44.9 21.2-44.9 47.1s16.2 47.1 44.9 47.1 44.9-21.2 44.9-47.1-16.4-47.1-44.9-47.1ZM305.1 19h-10.8v44.3H307c11.4 0 34.8-1.1 33.5-23.5-.8-22.9-30.4-20.8-35.4-20.8Zm639.2 4.1-19.4 60.7 39.9-.2-20.3-60.5"/>
           <path d="M493.4 52.1h-62.8V3.9h-19v122.4h19v-58h62.8v58h18.8V3.9h-18.8m-185.3-.4c-6.9-.2-20.9-.2-33.3-.2v122.9H294V79.6c4.8 0 14.7-.4 22.7-.6 11.2-.2 40.4-5.8 40.2-39.5.3-38-41.8-36-48.8-36Zm-1 59.8h-12.7V19h10.8c5 0 34.5-2.2 35.4 20.7 1.2 22.5-22.1 23.6-33.5 23.6Zm-176.2-60 .2 122.9h77.1v-16h-57.9V68.5h41c0-3.5-.2-8.6 0-15.3h-41V19.7h57.9c-.2-9.7 0-16.4 0-16.4h-77.3Zm-112.1 30c0-20.1 26.6-20.9 42.3-8 5.4-15.5 5.8-16.6 5.8-16.6C21.1-13.3.2 15.8.2 34.4c0 44.5 63.1 35 54 66.3-3.2 11.4-23.5 17.9-46.9 3.7-1.7 4.8-4.5 10.6-7.3 16.4 30.9 16.2 71 8.4 72.3-25 1.8-42-53.5-39-53.5-62.5Zm810.4 4.5c-2.8-36.5-38.2-33.7-46-34.1-6.5-.2-20.3-.4-32.2-.4V126h19.2V74.4c6.5 0 8.6 0 18.4-.4l35 52h23.3l-38.7-55.2c10.4-3.8 22.5-12.7 21-33ZM782.1 60c-4.3 0-7.6 0-11.9-.2V18.3h10.1c4.8 0 30-1.5 32.2 18.6 2.7 23.8-25.2 23.1-30.4 23.1ZM955.9 3.5h-22.2l-40.2 122.9h19c6-22.2 8-28.5 8-28.5l49.7-.2c5.8 16.4 10.1 28.9 10.1 28.9h19.7L955.9 3.5Zm-31 80.3 19.4-60.7h.2l20.3 60.5-39.9.2ZM631.4 0c-39.1 0-64.6 28.9-64.6 64.8s25.5 64.8 64.6 64.8S696 100.7 696 64.8 670.5 0 631.4 0Zm0 111.9c-28.7 0-44.9-20.9-44.9-47.1s16.2-47.1 44.9-47.1 44.9 20.9 44.9 47.1-16.2 47.1-44.9 47.1Z"/>
         </svg>
         <span>Memory Game</span>
       </h1>
+
       <div class="win-overlay" hidden>
-        <div class="win-overlay__content">
+        <div
+          class="win-overlay__content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="win-dialog-title"
+        >
+          <h2 id="win-dialog-title" class="visually-hidden">
+            Partie terminée, vous avez gagné
+          </h2>
+      
           <dotlottie-wc
             id="win-lottie"
             src="/lottie/win.json"
@@ -38,7 +83,7 @@
           ></dotlottie-wc>
       
           <button
-            type="button"
+           
             class="replay-button"
           >
             Rejouer
@@ -46,142 +91,216 @@
         </div>
       </div>
       
-      <section class="memory-game">
-        <div class="memory-card" data-product="ysl">
+
+      <section class="memory-game" aria-label="Jeu de mémoire Sephora">
+        <div role="button" tabindex="0" class="memory-card" data-product="ysl">
           <div class="front-face">
-            <img src="img/product-ysl.jpg" alt="Yves Saint Laurent" />
+            <img src="img/product-ysl.jpg" alt="Parfum Yves Saint Laurent chez Sephora" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
               <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
             </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="dior">
+        <div role="button" tabindex="0" class="memory-card" data-product="dior">
           <div class="front-face">
-            <img src="img/product-dior.jpg" alt="Dior" />
+            <img src="img/product-dior.jpg" alt="Parfum Dior chez Sephora" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="giorgio">
+        <div role="button" tabindex="0" class="memory-card" data-product="giorgio">
           <div class="front-face">
-            <img src="img/product-giorgio.jpg" alt="Armani" />
+            <img src="img/product-giorgio.jpg" alt="Parfum Armani chez Sephora" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="lancome">
+        <div role="button" tabindex="0" class="memory-card" data-product="lancome">
           <div class="front-face">
-            <img src="img/product-lancome.jpg" alt="Lancome" />
+            <img src="img/product-lancome.jpg" alt="" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="paco-rabanne">
+        <div role="button" tabindex="0" class="memory-card" data-product="paco-rabanne">
           <div class="front-face">
-            <img src="img/product-paco-rabanne.jpg" alt="Paco Rabanne" />
+            <img src="img/product-paco-rabanne.jpg" alt="Parfum Paco Rabanne chez Sephora" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="boss">
+        <div role="button" tabindex="0" class="memory-card" data-product="boss">
           <div class="front-face">
-            <img src="img/product-boss.jpg" alt="Boss" />
+            <img src="img/product-boss.jpg" alt="" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="ysl">
+        <div role="button" tabindex="0" class="memory-card" data-product="ysl">
           <div class="front-face">
-            <img src="img/product-ysl.jpg" alt="" />
+            <img src="img/product-ysl.jpg" alt="" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="lancome">
+        <div role="button" tabindex="0" class="memory-card" data-product="lancome">
           <div class="front-face">
-            <img src="img/product-lancome.jpg" alt="" />
+            <img src="img/product-lancome.jpg" alt="Parfum Lancôme chez Sephora" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="giorgio">
+        <div role="button" tabindex="0" class="memory-card" data-product="giorgio">
           <div class="front-face">
-            <img src="img/product-giorgio.jpg" alt="" />
+            <img src="img/product-giorgio.jpg" alt="" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="dior">
+        <div role="button" tabindex="0" class="memory-card" data-product="dior">
           <div class="front-face">
-            <img src="img/product-dior.jpg" alt="" />
+            <img src="img/product-dior.jpg" alt="" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="paco-rabanne">
+        <div role="button" tabindex="0" class="memory-card" data-product="paco-rabanne">
           <div class="front-face">
-            <img src="img/product-paco-rabanne.jpg" alt="" />
+            <img src="img/product-paco-rabanne.jpg" alt="" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
 
-        <div class="memory-card" data-product="boss">
+        <div role="button" tabindex="0" class="memory-card" data-product="boss">
           <div class="front-face">
-            <img src="img/product-boss.jpg" alt="" />
+            <img src="img/product-boss.jpg" alt="Parfum Boss chez Sephora" width="110" height="150" decoding="async" />
           </div>
           <div class="back-face">
-            <svg class="sephora-s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.84 339.57">
-              <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
-            </svg>
+            <svg
+              class="sephora-s"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 49.84 339.57"
+              aria-hidden="true"
+              focusable="false"
+            >
+      <path d="M37.85 0S-9.91 78.85 1.87 162.66c8.96 63.73 31.48 102.69 6 176.9 0 0 41.98-52.9 41.98-129.86-.01-44.77-39.74-138.49-12-209.7Z"/>
+    </svg>
           </div>
         </div>
       </section>
+
       <div class="theme-toggle" aria-label="Basculer le thème">
         <span id="theme-toggle-label" class="visually-hidden">Basculer le thème</span>
-      
+
         <label class="toggle_switch" for="theme-switch">
           <input
             id="theme-switch"
@@ -190,15 +309,30 @@
             role="switch"
             aria-labelledby="theme-toggle-label"
           />
-      
-          <svg class="checkbox" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 80" aria-hidden="true">
-            <path class="outer-ring" d="M41.534 9h88.932c17.51 0 31.724 13.658 31.724 30.482 0 16.823-14.215 30.48-31.724 30.48H41.534c-17.51 0-31.724-13.657-31.724-30.48C9.81 22.658 24.025 9 41.534 9z" fill="none" stroke="#233043" stroke-width="3" stroke-linecap="square" stroke-miterlimit="3"/>
-            <path class="is_checked" d="M17 39.482c0-12.694 10.306-23 23-23s23 10.306 23 23-10.306 23-23 23-23-10.306-23-23z"/>
-            <path class="is_unchecked" d="M132.77 22.348c7.705 10.695 5.286 25.617-5.417 33.327-2.567 1.85-5.38 3.116-8.288 3.812 7.977 5.03 18.54 5.024 26.668-.83 10.695-7.706 13.122-22.634 5.418-33.33-5.855-8.127-15.88-11.474-25.04-9.23 2.538 1.582 4.806 3.676 6.66 6.25z"/>
+
+          <svg class="checkbox" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 80" aria-hidden="true" focusable="false">
+            <path
+              class="outer-ring"
+              d="M41.534 9h88.932c17.51 0 31.724 13.658 31.724 30.482 0 16.823-14.215 30.48-31.724 30.48H41.534c-17.51 0-31.724-13.657-31.724-30.48C9.81 22.658 24.025 9 41.534 9z"
+              fill="none"
+              stroke="#233043"
+              stroke-width="3"
+              stroke-linecap="square"
+              stroke-miterlimit="3"
+            />
+            <path
+              class="is_checked"
+              d="M17 39.482c0-12.694 10.306-23 23-23s23 10.306 23 23-10.306 23-23 23-23-10.306-23-23z"
+            />
+            <path
+              class="is_unchecked"
+              d="M132.77 22.348c7.705 10.695 5.286 25.617-5.417 33.327-2.567 1.85-5.38 3.116-8.288 3.812 7.977 5.03 18.54 5.024 26.668-.83 10.695-7.706 13.122-22.634 5.418-33.33-5.855-8.127-15.88-11.474-25.04-9.23 2.538 1.582 4.806 3.676 6.66 6.25z"
+            />
           </svg>
         </label>
       </div>
-      <button class="sound-toggle" type="button" aria-pressed="false" aria-label="Activer le son">
+
+      <button class="sound-toggle" aria-pressed="false" aria-label="Activer le son">
         <span class="visually-hidden">Contrôle du son</span>
         <i class="fa-solid fa-volume-xmark sound-toggle__icon sound-toggle__icon--off"></i>
         <i class="fa-solid fa-volume-high sound-toggle__icon sound-toggle__icon--on"></i>
