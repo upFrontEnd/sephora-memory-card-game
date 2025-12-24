@@ -15,8 +15,14 @@
 }
 
 .sound-toggle__icon {
-    font-size: 1rem;
-    line-height: 1;
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* Etat initial : son OFF -> icône xmark visible */

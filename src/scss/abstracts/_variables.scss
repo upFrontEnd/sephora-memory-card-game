@@ -16,7 +16,8 @@ $color-text-dark: #f3f4f6;
 $shadow-subtle: 0 8px 20px rgb(0 0 0 / 10%);
 
 // Typography
-$font-family-base: system-ui, -apple-system, blinkmacsystemfont, "SF Pro Text", "Segoe UI", sans-serif;
+$font-family-base: system-ui, -apple-system, "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", sans-serif;
+$font-family-ui: "Poppins", $font-family-base;
 $font-size-sm: 0.875rem;
 
 // ===========

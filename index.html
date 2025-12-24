@@ -27,22 +27,26 @@
     <meta name="twitter:image:alt" content="Interface du Sephora Memory Game avec une grille de cartes parfum" />
     <meta name="twitter:url" content="https://sephora-memory-game.netlify.app/" />
     <meta name="twitter:domain" content="sephora-memory-game.netlify.app" />
-    
-    <meta name="theme-color" content="#060b18" />
+
     <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0b0b" media="(prefers-color-scheme: dark)" />
+
+    <meta name="robots" content="index,follow" />
+    
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#0b0b0b" />
+    <meta name="msapplication-TileColor" content="#0b0b0b" />
+
     <link rel="canonical" href="https://sephora-memory-game.netlify.app/" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
     />
     <script type="module" src="/src/js/main.js"></script>
   </head>
@@ -69,11 +73,17 @@
           role="dialog"
           aria-modal="true"
           aria-labelledby="win-dialog-title"
+          tabindex="-1"
         >
-          <h2 id="win-dialog-title" class="visually-hidden">
-            Partie terminée, vous avez gagné
+          <h2 id="win-dialog-title">
+            <p class="visually-hidden" role="status" aria-live="polite">
+              Partie terminée, vous avez gagné.
+            </p>
           </h2>
-      
+          <p id="game-instructions" class="visually-hidden">
+            Jeu de mémoire. Déplacez-vous avec Tab. Appuyez sur Entrée ou Espace pour retourner une carte.
+            Trouvez les paires identiques.
+          </p>
           <dotlottie-wc
             id="win-lottie"
             src="/lottie/win.json"
@@ -83,10 +93,13 @@
           ></dotlottie-wc>
       
           <button
-           
+            type="button"
             class="replay-button"
           >
             Rejouer
+          </button>
+          <button type="button" class="win-close" aria-label="Fermer la fenêtre de victoire">
+            Fermer
           </button>
         </div>
       </div>
@@ -334,9 +347,32 @@
 
       <button class="sound-toggle" aria-pressed="false" aria-label="Activer le son">
         <span class="visually-hidden">Contrôle du son</span>
-        <i class="fa-solid fa-volume-xmark sound-toggle__icon sound-toggle__icon--off"></i>
-        <i class="fa-solid fa-volume-high sound-toggle__icon sound-toggle__icon--on"></i>
+      
+        <!-- OFF -->
+        <svg
+          class="sound-toggle__icon sound-toggle__icon--off"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M11 5 6 9H3v6h3l5 4V5z"></path>
+          <path d="M23 9 17 15"></path>
+          <path d="M17 9 23 15"></path>
+        </svg>
+      
+        <!-- ON -->
+        <svg
+          class="sound-toggle__icon sound-toggle__icon--on"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M11 5 6 9H3v6h3l5 4V5z"></path>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+          <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+        </svg>
       </button>
+      
     </main>
   </body>
 </html>
