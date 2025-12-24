@@ -38,12 +38,14 @@
 .replay-button {
   background: var(--bg-surface, #{$color-surface});
   border: none;
+  box-shadow: 0 0 0 1px rgb(255, 255, 255);
   border-radius: 999px;
   color: var(--text);
   cursor: pointer;
   font-family: $font-family-ui;
   font-size: $font-size-sm;
   padding: .5rem 1rem;
+  position: relative; top: 10px;
 }
 
 .replay-button:hover {

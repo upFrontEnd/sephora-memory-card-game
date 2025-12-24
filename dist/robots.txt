@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sephora-memory-card-game.netlify.app/sitemap.xml
