@@ -7,12 +7,12 @@
 .memory-card {
   background: var(--bg-surface, #{$color-surface});
   border: 1px solid var(--border-subtle, #{$color-border-subtle});
-  border-radius: $radius;
+  border-radius: 0.75rem;;
   box-shadow: $shadow-subtle;
   cursor: pointer;
   position: relative;
-  width: 100%; max-width: $card-w;
-  height: $card-h;
+  width: 100%; max-width: 110px;
+  height: 150px;
   transform-style: preserve-3d;
   transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
   user-select: none;
@@ -65,14 +65,14 @@
   // Responsive sizing des cartes
   // ============================
   @media (width <= 640px) {
-    height: $card-h * 0.85;
+    height: 150px * 0.85;
     .sephora-s {
       width: 1.8rem; height: 6rem;
     }
   }
 
   @media (width <= 420px) {
-    height: $card-h * 0.7;
+    height: 150px * 0.7;
     .sephora-s {
       width: 1.6rem; height: 5rem;
     }

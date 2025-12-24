@@ -1,7 +1,6 @@
 @use "../abstracts" as *;
 
 .sound-toggle {
-    background: var(--bg-surface, #{$color-surface});
     border: 1px solid #233043;
     border-radius: 50%;
     box-shadow: $shadow-subtle;
@@ -10,7 +9,7 @@
     display: inline-flex;
         align-items: center;
         justify-content: center;
-    position: fixed; top: $space-4; left: $space-4;
+    position: fixed; top: 1rem; left: 1rem;
     width: 40px; height: 40px;
 }
 
