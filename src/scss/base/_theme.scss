@@ -1,12 +1,21 @@
 @use "../abstracts" as *;
 
+@font-face {
+  font-family: 'Poppins Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Poppins Regular'), url('../../../public/font/Poppins-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+
 body {
   background:
     radial-gradient(900px 500px at 20% -10%, rgb(37 99 235 / 18%), transparent 60%),
     radial-gradient(900px 500px at 90% 10%, rgb(96 165 250 / 16%), transparent 60%),
     var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: $font-family-base;
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
 }
