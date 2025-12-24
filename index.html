@@ -41,9 +41,7 @@
     <meta name="msapplication-TileColor" content="#0b0b0b" />
 
     <link rel="canonical" href="https://sephora-memory-card-game.netlify.app/" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/src/scss/style.scss" />
     <script type="module" src="/src/js/main.js"></script>
   </head>
   <body>
@@ -80,14 +78,7 @@
             Jeu de mémoire. Déplacez-vous avec Tab. Appuyez sur Entrée ou Espace pour retourner une carte.
             Trouvez les paires identiques.
           </p>
-          <!-- <dotlottie-wc
-            id="win-lottie"
-            src="/lottie/win.json"
-            loop
-            autoplay="false"
-            class="win-lottie"
-          ></dotlottie-wc> -->
-      
+
           <button
             type="button"
             class="replay-button"
@@ -103,7 +94,7 @@
       <section class="memory-game" aria-label="Jeu de mémoire Sephora">
         <div role="button" tabindex="0" class="memory-card" data-product="ysl" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-ysl.webp" alt="Parfum Yves Saint Laurent chez Sephora" width="110" height="150" decoding="async" loading="lazy" fetchpriority="high" />
+            <img src="img/product-ysl.webp" alt="Parfum Yves Saint Laurent chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -120,7 +111,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="dior" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-dior.webp" alt="Parfum Dior chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority=high
+            <img src="img/product-dior.webp" alt="Parfum Dior chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"
             />
           </div>
           <div class="back-face">
@@ -138,7 +129,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="giorgio" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-giorgio.webp" alt="Parfum Armani chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-giorgio.webp" alt="Parfum Armani chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -155,7 +146,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="lancome" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-lancome.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-lancome.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -172,7 +163,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="paco-rabanne" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-paco-rabanne.webp" alt="Parfum Paco Rabanne chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-paco-rabanne.webp" alt="Parfum Paco Rabanne chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -189,7 +180,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="boss" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-boss.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-boss.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -206,7 +197,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="ysl" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-ysl.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-ysl.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -223,7 +214,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="lancome" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-lancome.webp" alt="Parfum Lancôme chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-lancome.webp" alt="Parfum Lancôme chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -240,7 +231,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="giorgio" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-giorgio.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-giorgio.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -257,7 +248,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="dior" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-dior.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-dior.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -274,7 +265,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="paco-rabanne" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-paco-rabanne.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-paco-rabanne.webp" alt="" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
@@ -291,7 +282,7 @@
 
         <div role="button" tabindex="0" class="memory-card" data-product="boss" aria-label="Sélectionner cette carte">
           <div class="front-face">
-            <img src="img/product-boss.webp" alt="Parfum Boss chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority=high />
+            <img src="img/product-boss.webp" alt="Parfum Boss chez Sephora" width="110" height="150" decoding="async" loading="eager" fetchpriority="high"  />
           </div>
           <div class="back-face">
             <svg
