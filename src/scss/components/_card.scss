@@ -18,7 +18,7 @@
   user-select: none;
 
   &-shadow {
-    box-shadow: 0 0 40px rgba(20, 121, 235, 1);
+    box-shadow: 0px 2px 14px 2px var(--shadow, #{$shadow-dark});
   }
 
   &.flip {

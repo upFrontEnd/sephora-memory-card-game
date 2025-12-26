@@ -3,6 +3,7 @@ $color-bg: #f6f6f6;
 $color-surface: #fff;
 $color-surface-soft: #fbfbfb;
 $color-border-subtle: #d6d6d6;
+$shadow-light: #ff0000;
 
 // Neutrals (dark base)
 $color-bg-dark: #050506;
@@ -11,6 +12,7 @@ $color-surface-soft-dark: #0f0f10;
 $color-border-subtle-dark: #1f1f22;
 $color-logo-dark: #fff;
 $color-text-dark: #f3f4f6;
+$shadow-dark:  rgba(20, 121, 235, 1);
 
 // Shadows & radius
 $shadow-subtle: 0 8px 20px rgb(0 0 0 / 10%);
@@ -29,6 +31,7 @@ $theme-light: (
   bg-surface: $color-surface,
   bg-surface-soft: $color-surface-soft,
   border-subtle: $color-border-subtle,
+  shadow: $shadow-light
 
 );
 $theme-dark: (
@@ -36,5 +39,6 @@ $theme-dark: (
   bg-surface: $color-surface-dark,
   bg-surface-soft: $color-surface-soft-dark,
   border-subtle: $color-border-subtle-dark,
-  logo: $color-logo-dark
+  logo: $color-logo-dark,
+  shadow: $shadow-dark
 );
