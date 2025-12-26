@@ -1,5 +1,27 @@
 import { shuffleCards } from "./shuffle.js";
 import { playSound } from "./sound.js";
+import lottie from "lottie-web";
+
+/**
+ * Cache global (module) pour éviter de re-fetch le JSON à chaque victoire.
+ * Le fichier doit être ici : /public/lottie/rewards.json
+ */
+let winAnimationDataCache = null;
+
+async function getWinAnimationData() {
+  if (winAnimationDataCache) return winAnimationDataCache;
+
+  // Vite : BASE_URL gère les déploiements sous sous-chemin
+  const url = `${import.meta.env.BASE_URL}lottie/rewards.json`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Impossible de charger ${url} (HTTP ${res.status})`);
+  }
+
+  winAnimationDataCache = await res.json();
+  return winAnimationDataCache;
+}
 
 export function createGame() {
   const cards = Array.from(document.querySelectorAll(".memory-card"));
@@ -7,6 +29,42 @@ export function createGame() {
   const gameContainer = document.querySelector(".memory-game");
   const overlay = document.querySelector(".win-overlay");
   const replayButton = document.querySelector(".replay-button");
+
+  // Conteneur Lottie (à placer DANS l’overlay : <div class="win-lottie"></div>)
+  const lottieContainer = document.querySelector(".win-lottie");
+
+  // === Lottie state ===
+  let winLottieInstance = null;
+
+  async function playWinLottie() {
+    if (!lottieContainer) return;
+
+    // Évite les doubles instances si jamais la victoire est déclenchée plusieurs fois
+    stopWinLottie();
+
+    const animationData = await getWinAnimationData();
+
+    winLottieInstance = lottie.loadAnimation({
+      container: lottieContainer,
+      renderer: "svg",
+      loop: false,
+      autoplay: true,
+      animationData,
+    });
+  }
+
+  function stopWinLottie() {
+    if (winLottieInstance) {
+      winLottieInstance.stop();
+      winLottieInstance.destroy();
+      winLottieInstance = null;
+    }
+
+    // Nettoie le DOM injecté par Lottie pour que ça disparaisse avec l’overlay
+    if (lottieContainer) {
+      lottieContainer.innerHTML = "";
+    }
+  }
 
   // === État du tour en cours ===
   // hasFlippedCard : indique si on a déjà retourné une 1ère carte (on attend la 2e)
@@ -93,7 +151,12 @@ export function createGame() {
     if (total > 0 && matched === total) {
       gameContainer.classList.add("win"); // état global (utile pour styles/logic)
       playSound("win");
-      overlay.hidden = false; // affiche l’overlay de victoire + bouton "Rejouer"
+
+      // Affiche l’overlay de victoire
+      overlay.hidden = false;
+
+      // Joue l’animation Lottie dans l’overlay
+      playWinLottie().catch((err) => console.error(err));
     }
   }
 
@@ -111,6 +174,9 @@ export function createGame() {
       card.addEventListener("click", flipCard);
     });
 
+    // Stoppe complètement Lottie et le fait disparaître en même temps que l’overlay
+    stopWinLottie();
+
     // Nettoie l’état global + masque l’overlay
     gameContainer.classList.remove("win");
     overlay.hidden = true;
@@ -127,10 +193,12 @@ export function createGame() {
     // Ajoute le handler de clic sur chaque carte
     cards.forEach((card) => card.addEventListener("click", flipCard));
 
-    // Branche le bouton "Rejouer"
+    // Branche le bouton "Rejouer" (sécurisé contre l’empilement si mount est rappelé)
+    replayButton.removeEventListener("click", restartGame);
     replayButton.addEventListener("click", restartGame);
 
     // État initial (pas de victoire affichée)
+    stopWinLottie();
     overlay.hidden = true;
     gameContainer.classList.remove("win");
   }
